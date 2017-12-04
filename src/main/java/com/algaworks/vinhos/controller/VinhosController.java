@@ -15,6 +15,7 @@ public class VinhosController {
 	public ModelAndView novo() {
 		ModelAndView modelAndView = new ModelAndView("vinhos/cadastro-vinho");
 		modelAndView.addObject("vinho", new Vinho());
+		modelAndView.addObject("tipos", )
 		return modelAndView;
 	}
 
