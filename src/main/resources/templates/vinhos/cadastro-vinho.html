@@ -120,9 +120,11 @@
 							<div class="form-group">
 								<label for="tipo">Tipo</label>
 
-								<select id="tipo" class="form-control" th:field="*{tipo}">
+								<select id="tipo" class="form-control" 
+									th:field="*{tipo}">
 									<option value="">Selecione o tipo</option>
-									<option>Opção 1</option>
+									<option th:each="tipo: ${tipos}" 
+										th:value="${tipo}" th:text="#{|tipoVinho.${tipo}|}"></option>
 								</select>
 							</div>
 						</div>
@@ -131,7 +133,7 @@
 							<div class="form-group">
 								<label for="valor">Valor</label>
 								
-								<input id="valor" type="text" class="form-control js-moeda" />
+								<input id="valor" type="text" class="form-control js-moeda" th:field="*{valor}" />
 							</div>
 						</div>
 					</div>

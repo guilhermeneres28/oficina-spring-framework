@@ -77,4 +77,11 @@ public class Vinho {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Vinho [id=" + id + ", nome=" + nome + ", tipo=" + tipo + ", valor=" + valor + "]";
+	}
+	
+	
+
 }
