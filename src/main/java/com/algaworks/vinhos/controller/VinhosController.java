@@ -21,6 +21,13 @@ public class VinhosController {
 	@Autowired
 	private Vinhos vinhos;
 	
+	@GetMapping
+	public ModelAndView listar() {
+		ModelAndView modelAndView = new ModelAndView("vinhos/lista-vinhos");
+		modelAndView.addObject("vinhos", vinhos.findAll());
+		return modelAndView ;
+	}
+	
 	@GetMapping("/{id}")
 	public ModelAndView editar(@PathVariable Long id) {
 		return novo(vinhos.findOne(id));
