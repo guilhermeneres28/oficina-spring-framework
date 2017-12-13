@@ -50,16 +50,19 @@
 					</thead>
 					<tbody>
 						<tr th:each="vinho: ${vinhos}">
-							<td class="text-center" th:text="${vinho.idS}">1</td>
+							<td class="text-center" th:text="${vinho.id}">1</td>
 
-							<td><a href="javascript:;">Vinho Azul</a></td>
+							<td>
+								<a th:href="@{/vinhos/{id}(id=${vinho.id})}" th:text="${vinho.nome}">Vinho Azul</a>
+							</td>
 
-							<td>Tinto</td>
+							<td th:text="#{|tipoVinho.${vinho.tipo}|}">Tinto</td>
 
-							<td class="text-right">55,00</td>
+							<td class="text-right" th:text="|R$${{vinho.valor}}|">55,00</td>
 
 							<td class="text-center">
-								<form method="POST" onsubmit="return confirm('Posso remover?');">
+								<form method="POST" th:onsubmit="'return confirm(\'Posso remover ' + ${vinho.nome} + '?\');'"
+										th:action="@{/vinhos/{id}(id=${vinho.id})}">
 									<button type="submit" class="btn btn-danger btn-xs">
 										<span class="fa fa-trash"></span>
 									</button>
@@ -67,7 +70,7 @@
 							</td>
 						</tr>
 
-						<tr>
+						<tr th:if="${vinhos.empty}">
 							<td colspan="5">Nenhum vinho cadastrado</td>
 						</tr>
 					</tbody>
